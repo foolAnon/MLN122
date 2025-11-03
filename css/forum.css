@@ -1,0 +1,300 @@
+/* ========================================
+   FORUM SPECIFIC STYLES
+   ======================================== */
+.forum-hero {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.topics-section {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.topic-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.topic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: #00f2fe;
+}
+
+.topic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.topic-icon {
+    font-size: 3rem;
+}
+
+.topic-status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.topic-status.hot {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+}
+
+.topic-status.trending {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+}
+
+.topic-status.new {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+}
+
+.topic-status:not(.hot):not(.trending):not(.new) {
+    background: var(--light-bg);
+    color: var(--text-dark);
+}
+
+.topic-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+.topic-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.topic-viewpoints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.viewpoint-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.viewpoint-tag.worker {
+    background: #10b98120;
+    color: #10b981;
+    border: 1px solid #10b981;
+}
+
+.viewpoint-tag.employer {
+    background: #3b82f620;
+    color: #3b82f6;
+    border: 1px solid #3b82f6;
+}
+
+.viewpoint-tag.state {
+    background: #f59e0b20;
+    color: #f59e0b;
+    border: 1px solid #f59e0b;
+}
+
+.viewpoint-tag.expert {
+    background: #8b5cf620;
+    color: #8b5cf6;
+    border: 1px solid #8b5cf6;
+}
+
+/* ========================================
+   DEBATE MODAL STYLES
+   ======================================== */
+.debate-header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 20px 20px 0 0;
+    margin: -3rem -3rem 2rem -3rem;
+}
+
+.debate-title {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.debate-intro {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.viewpoints-section {
+    margin-bottom: 3rem;
+}
+
+.viewpoints-section h3 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.viewpoints-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.viewpoint-card {
+    background: var(--light-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    border-left: 5px solid;
+    transition: all 0.3s ease;
+}
+
+.viewpoint-card:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.viewpoint-card.support {
+    border-left-color: #10b981;
+}
+
+.viewpoint-card.oppose {
+    border-left-color: #ef4444;
+}
+
+.viewpoint-card.neutral {
+    border-left-color: #f59e0b;
+}
+
+.viewpoint-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.viewpoint-avatar {
+    font-size: 3rem;
+}
+
+.viewpoint-info h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.viewpoint-stance {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.viewpoint-stance.support {
+    background: #10b98120;
+    color: #10b981;
+}
+
+.viewpoint-stance.oppose {
+    background: #ef444420;
+    color: #ef4444;
+}
+
+.viewpoint-stance.neutral {
+    background: #f59e0b20;
+    color: #f59e0b;
+}
+
+.viewpoint-content h5 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.viewpoint-content ul {
+    margin-left: 1.5rem;
+    color: var(--text-light);
+}
+
+.viewpoint-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.viewpoint-content strong {
+    color: var(--text-dark);
+}
+
+.interest-analysis {
+    background: linear-gradient(135deg, #4facfe10, #00f2fe10);
+    border: 2px solid #00f2fe;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.interest-analysis h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #00f2fe;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.interest-analysis p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.interest-analysis ul {
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+.interest-analysis li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .topics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .debate-header {
+        padding: 2rem 1.5rem;
+        margin: -2rem -1.5rem 1.5rem -1.5rem;
+    }
+    
+    .debate-title {
+        font-size: 1.5rem;
+    }
+}

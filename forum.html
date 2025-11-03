@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diễn đàn - Lăng kính Lợi ích Kinh tế</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/forum.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🔍 Lăng kính Lợi ích Kinh tế</h1>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Trang chủ</a>
+                    <a href="lab.html" class="nav-link">Lab Mô phỏng</a>
+                    <a href="casestudy.html" class="nav-link">Case Study</a>
+                    <a href="forum.html" class="nav-link active">Diễn đàn</a>
+                    <a href="about.html" class="nav-link">Giới thiệu</a>
+                </nav>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Forum Hero -->
+    <section class="forum-hero">
+        <div class="container">
+            <h1 class="page-title">💬 DIỄN ĐÀN ĐA CHIỀU</h1>
+            <p class="page-subtitle">Một vấn đề - Nhiều góc nhìn - Khám phá lợi ích đằng sau mỗi quan điểm</p>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="topics-section">
+        <div class="container">
+            <h2 class="section-title">Chọn chủ đề tranh luận</h2>
+            <div class="topics-grid">
+                <!-- Topic 1 -->
+                <div class="topic-card" onclick="openTopic('minimum-wage-increase')">
+                    <div class="topic-header">
+                        <div class="topic-icon">💰</div>
+                        <div class="topic-status hot">🔥 Hot</div>
+                    </div>
+                    <h3 class="topic-title">Tăng lương tối thiểu 15%: Nên hay không?</h3>
+                    <p class="topic-description">
+                        Công đoàn đề xuất tăng lương tối thiểu 15%, nhưng hiệp hội DN chỉ đồng ý 6%. 
+                        Ai đúng, ai sai?
+                    </p>
+                    <div class="topic-viewpoints">
+                        <span class="viewpoint-tag worker">👷 NLĐ: Ủng hộ</span>
+                        <span class="viewpoint-tag employer">👔 DN: Phản đối</span>
+                        <span class="viewpoint-tag state">🏛️ NN: Trung lập</span>
+                    </div>
+                </div>
+
+                <!-- Topic 2 -->
+                <div class="topic-card" onclick="openTopic('electric-price')">
+                    <div class="topic-header">
+                        <div class="topic-icon">⚡</div>
+                        <div class="topic-status trending">📈 Trending</div>
+                    </div>
+                    <h3 class="topic-title">Tăng giá điện sinh hoạt: Có hợp lý?</h3>
+                    <p class="topic-description">
+                        EVN đề xuất tăng giá điện 8% để bù lỗ, nhưng người dân cho rằng EVN lãng phí, 
+                        kém hiệu quả.
+                    </p>
+                    <div class="topic-viewpoints">
+                        <span class="viewpoint-tag employer">⚡ EVN: Cần tăng</span>
+                        <span class="viewpoint-tag worker">🏠 Dân: Phản đối</span>
+                        <span class="viewpoint-tag expert">📊 Chuyên gia: Có điều kiện</span>
+                    </div>
+                </div>
+
+                <!-- Topic 3 -->
+                <div class="topic-card" onclick="openTopic('tax-ecommerce')">
+                    <div class="topic-header">
+                        <div class="topic-icon">📱</div>
+                        <div class="topic-status new">✨ Mới</div>
+                    </div>
+                    <h3 class="topic-title">Đánh thuế shop online: Công bằng hay kìm hãm?</h3>
+                    <p class="topic-description">
+                        Nhà nước muốn đánh thuế người bán online như cửa hàng truyền thống. 
+                        Điều này có công bằng không?
+                    </p>
+                    <div class="topic-viewpoints">
+                        <span class="viewpoint-tag state">🏛️ NN: Ủng hộ</span>
+                        <span class="viewpoint-tag worker">🛒 Shop online: Phản đối</span>
+                        <span class="viewpoint-tag employer">🏪 CH truyền thống: Ủng hộ</span>
+                    </div>
+                </div>
+
+                <!-- Topic 4 -->
+                <div class="topic-card" onclick="openTopic('healthcare-insurance')">
+                    <div class="topic-header">
+                        <div class="topic-icon">🏥</div>
+                        <div class="topic-status">💭 Tranh luận</div>
+                    </div>
+                    <h3 class="topic-title">Tăng mức đóng BHYT: Gánh nặng hay đầu tư?</h3>
+                    <p class="topic-description">
+                        Đề xuất tăng mức đóng BHYT từ 4.5% lên 6% lương để cải thiện chất lượng khám chữa bệnh.
+                    </p>
+                    <div class="topic-viewpoints">
+                        <span class="viewpoint-tag worker">👷 NLĐ: Chia rẽ</span>
+                        <span class="viewpoint-tag employer">👔 DN: Phản đối</span>
+                        <span class="viewpoint-tag state">🏥 BYT: Ủng hộ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Debate Modal -->
+    <div class="modal" id="debateModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeDebate()">&times;</span>
+            <div class="modal-body" id="debateBody">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-main">
+                    Sản phẩm sáng tạo môn học <strong>Kinh tế Chính trị Mác-Lênin</strong>
+                </p>
+                <p class="footer-info">
+                    Sinh viên thực hiện: [Tên SV] | Lớp: [Mã lớp] | GVHD: [Tên GV]
+                </p>
+                <p class="footer-disclaimer">
+                    <em>Mọi thông tin trong "Case Study" và "Diễn đàn" chỉ phục vụ mục đích học thuật.</em>
+                </p>
+                <p class="footer-copyright">
+                    © 2025 Lăng kính Lợi ích Kinh tế. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+</html>

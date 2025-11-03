@@ -1,0 +1,411 @@
+/* ========================================
+   LAB SPECIFIC STYLES
+   ======================================== */
+.lab-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+.role-selection {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.role-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    border: 3px solid transparent;
+}
+
+.role-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: #667eea;
+}
+
+.role-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.role-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.role-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.scenario-count {
+    background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+    color: #667eea;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.role-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.875rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-button:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.scenario-selection {
+    padding: 5rem 0;
+    background: white;
+}
+
+.scenario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.scenario-header h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+}
+
+.scenario-header h2 span {
+    color: #667eea;
+}
+
+.back-button {
+    background: var(--light-bg);
+    color: var(--text-dark);
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+    transform: translateX(-5px);
+}
+
+.scenarios-list {
+    display: grid;
+    gap: 2rem;
+}
+
+.scenario-item {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    border-left: 5px solid #667eea;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scenario-item:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-lg);
+    background: white;
+}
+
+.scenario-item-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.scenario-number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.scenario-item h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    flex: 1;
+}
+
+.scenario-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-left: 66px;
+}
+
+.simulation-area {
+    padding: 5rem 0;
+    background: white;
+}
+
+.simulation-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.simulation-header h2 {
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+.current-role {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.current-role strong {
+    font-size: 1.125rem;
+    margin-left: 0.5rem;
+}
+
+.scenario-description {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border-left: 5px solid #667eea;
+}
+
+.scenario-description p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.decisions-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.decisions-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.decision-option {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.decision-option:hover {
+    border-color: #667eea;
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+}
+
+.decision-option input[type="radio"] {
+    margin-top: 0.25rem;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.decision-content {
+    flex: 1;
+}
+
+.decision-content h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.decision-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.submit-decision {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.submit-decision:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.impact-analysis {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--light-bg);
+    border-radius: 20px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.impact-analysis h3 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.impact-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+}
+
+.impact-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.impact-meter {
+    height: 20px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.meter-fill {
+    height: 100%;
+    transition: width 1s ease, background 1s ease;
+    border-radius: 10px;
+}
+
+.impact-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.conclusion {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 5px solid #10b981;
+}
+
+.conclusion h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #10b981;
+}
+
+.conclusion p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.reset-button {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reset-button:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .simulation-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+}

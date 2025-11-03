@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lăng kính Lợi ích Kinh tế - Trang chủ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🔍 Lăng kính Lợi ích Kinh tế</h1>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link active">Trang chủ</a>
+                    <a href="lab.html" class="nav-link">Lab Mô phỏng</a>
+                    <a href="casestudy.html" class="nav-link">Case Study</a>
+                    <a href="forum.html" class="nav-link">Diễn đàn</a>
+                    <a href="about.html" class="nav-link">Giới thiệu</a>
+                </nav>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    LỢI ÍCH KINH TẾ<br>
+                    <span class="hero-subtitle-main">ĐỘNG CƠ ẨN SAU MỌI QUYẾT ĐỊNH.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Khám phá cách Lợi ích kinh tế định hình các mối quan hệ xã hội, từ nhà máy đến quốc gia, 
+                    qua lăng kính Kinh tế Chính trị Mác-Lênin.
+                </p>
+                <button class="cta-button" onclick="scrollToModules()">
+                    BẮT ĐẦU TRẢI NGHIỆM
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <h2 class="section-title">Tại sao chủ đề này quan trọng?</h2>
+            
+            <div class="quote-box">
+                <blockquote>
+                    "Những quan hệ kinh tế của một xã hội nhất định nào đó biểu hiện trước hết dưới hình thức <strong>lợi ích</strong>."
+                    <cite>— Ph. Ăngghen</cite>
+                </blockquote>
+            </div>
+
+            <div class="intro-columns">
+                <div class="intro-card">
+                    <div class="intro-card-icon">💰</div>
+                    <h3>Lợi ích Kinh tế là gì?</h3>
+                    <p>
+                        Là lợi ích vật chất, là động lực trực tiếp của mọi chủ thể kinh tế. 
+                        Từ lợi nhuận của doanh nghiệp đến tiền lương của người lao động, 
+                        tất cả đều được chi phối bởi lợi ích kinh tế.
+                    </p>
+                </div>
+                <div class="intro-card">
+                    <div class="intro-card-icon">⚖️</div>
+                    <h3>Quan hệ LIKT là gì?</h3>
+                    <p>
+                        Là sự tương tác, va chạm giữa các lợi ích khác nhau trong xã hội. 
+                        Nó có thể <strong>Thống nhất</strong> (cùng thắng - win-win) hoặc 
+                        <strong>Mâu thuẫn</strong> (xung đột lợi ích).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Modules Section -->
+    <section class="modules-section" id="modules">
+        <div class="container">
+            <h2 class="section-title">Lựa chọn Lăng kính của bạn</h2>
+            
+            <div class="modules-grid">
+                <!-- Module 1: Lab -->
+                <div class="module-card lab-card">
+                    <div class="module-icon">🎮</div>
+                    <h3 class="module-title">LAB MÔ PHỎNG</h3>
+                    <h4 class="module-question">Bạn sẽ quyết định ra sao?</h4>
+                    <p class="module-description">
+                        Thử vào vai Chủ doanh nghiệp, Người lao động và Nhà nước. 
+                        Mọi quyết định của bạn đều ảnh hưởng đến lợi ích của các bên. 
+                        Liệu bạn có thể tạo ra sự hài hòa?
+                    </p>
+                    <a href="lab.html" class="module-button lab-button">
+                        Tham gia LAB →
+                    </a>
+                </div>
+
+                <!-- Module 2: Case Study -->
+                <div class="module-card case-card">
+                    <div class="module-icon">🗺️</div>
+                    <h3 class="module-title">CASE STUDY THỰC TIỄN</h3>
+                    <h4 class="module-question">Từ lý thuyết đến đời sống</h4>
+                    <p class="module-description">
+                        Phân tích các sự kiện kinh tế nóng (Formosa, Grab, Giá xăng...) 
+                        qua lăng kính LIKT. Xem lý thuyết vận hành trong thế giới thực 
+                        như thế nào.
+                    </p>
+                    <a href="casestudy.html" class="module-button case-button">
+                        Xem Phân tích →
+                    </a>
+                </div>
+
+                <!-- Module 3: Forum -->
+                <div class="module-card forum-card">
+                    <div class="module-icon">💬</div>
+                    <h3 class="module-title">DIỄN ĐÀN ĐA CHIỀU</h3>
+                    <h4 class="module-question">Một vấn đề, nhiều góc nhìn</h4>
+                    <p class="module-description">
+                        Khám phá lợi ích đằng sau mỗi quan điểm tranh luận. 
+                        Tại sao họ lại nghĩ vậy khi nói về tăng thuế, tăng lương tối thiểu, 
+                        hay giá điện?
+                    </p>
+                    <a href="forum.html" class="module-button forum-button">
+                        Tham gia Diễn đàn →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-main">
+                    Sản phẩm sáng tạo môn học <strong>Kinh tế Chính trị Mác-Lênin</strong>
+                </p>
+                <p class="footer-info">
+                    Sinh viên thực hiện: [Tên SV] | Lớp: [Mã lớp] | GVHD: [Tên GV]
+                </p>
+                <p class="footer-info">
+                    Trường Đại học XYZ - Khoa Kinh tế
+                </p>
+                <p class="footer-disclaimer">
+                    <em>Mọi thông tin trong "Case Study" và "Diễn đàn" chỉ phục vụ mục đích học thuật.</em>
+                </p>
+                <p class="footer-copyright">
+                    © 2025 Lăng kính Lợi ích Kinh tế. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+/* ========================================
+   ABOUT PAGE SPECIFIC STYLES
+   ======================================== */
+.about-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.project-info {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.info-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.info-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.info-card p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.info-card strong {
+    color: var(--primary-color);
+}
+
+/* ========================================
+   THEORY SECTION
+   ======================================== */
+.theory-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.theory-content {
+    display: grid;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.theory-card {
+    background: var(--light-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.theory-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.theory-text {
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.theory-text p {
+    margin-bottom: 1rem;
+}
+
+.theory-text em {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.theory-text ul {
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+.theory-text li {
+    margin-bottom: 0.75rem;
+}
+
+.theory-text strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.relation-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.relation-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid;
+}
+
+.relation-card.unity {
+    border-color: #10b981;
+}
+
+.relation-card.conflict {
+    border-color: #ef4444;
+}
+
+.relation-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.relation-card.unity h4 {
+    color: #10b981;
+}
+
+.relation-card.conflict h4 {
+    color: #ef4444;
+}
+
+.relation-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ========================================
+   TEAM SECTION
+   ======================================== */
+.team-section {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.team-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2rem;
+}
+
+.team-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+}
+
+.team-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.team-info {
+    padding: 2rem;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.info-row span {
+    color: var(--text-light);
+}
+
+.disclaimer-box {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 2px solid #f59e0b;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.disclaimer-box h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #b45309;
+    margin-bottom: 1rem;
+}
+
+.disclaimer-box p {
+    color: #78350f;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+}
+
+.disclaimer-box strong {
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .relation-types {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+    
+    .info-row strong {
+        font-weight: 700;
+    }
+}

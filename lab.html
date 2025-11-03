@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Mô phỏng - Lăng kính Lợi ích Kinh tế</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/lab.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🔍 Lăng kính Lợi ích Kinh tế</h1>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Trang chủ</a>
+                    <a href="lab.html" class="nav-link active">Lab Mô phỏng</a>
+                    <a href="casestudy.html" class="nav-link">Case Study</a>
+                    <a href="forum.html" class="nav-link">Diễn đàn</a>
+                    <a href="about.html" class="nav-link">Giới thiệu</a>
+                </nav>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Lab Hero -->
+    <section class="lab-hero">
+        <div class="container">
+            <h1 class="page-title">🎮 LAB MÔ PHỎNG</h1>
+            <p class="page-subtitle">Trải nghiệm vai trò của các chủ thể kinh tế và khám phá cách quyết định của bạn ảnh hưởng đến lợi ích của tất cả</p>
+        </div>
+    </section>
+
+    <!-- Role Selection -->
+    <section class="role-selection">
+        <div class="container">
+            <h2 class="section-title">Chọn vai trò của bạn</h2>
+            <div class="roles-grid">
+                <div class="role-card" onclick="selectRole('employer')">
+                    <div class="role-icon">👔</div>
+                    <h3>Chủ Doanh nghiệp</h3>
+                    <p>Tối đa hóa lợi nhuận, quản lý chi phí, phát triển công ty</p>
+                    <div class="scenario-count">3 tình huống</div>
+                    <button class="role-button">Chọn vai trò</button>
+                </div>
+                <div class="role-card" onclick="selectRole('worker')">
+                    <div class="role-icon">👷</div>
+                    <h3>Người Lao động</h3>
+                    <p>Cải thiện thu nhập, điều kiện làm việc, quyền lợi</p>
+                    <div class="scenario-count">2 tình huống</div>
+                    <button class="role-button">Chọn vai trò</button>
+                </div>
+                <div class="role-card" onclick="selectRole('state')">
+                    <div class="role-icon">🏛️</div>
+                    <h3>Nhà nước</h3>
+                    <p>Cân bằng lợi ích, phát triển bền vững, công bằng xã hội</p>
+                    <div class="scenario-count">2 tình huống</div>
+                    <button class="role-button">Chọn vai trò</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scenario Selection -->
+    <section class="scenario-selection" id="scenarioSelection" style="display: none;">
+        <div class="container">
+            <div class="scenario-header">
+                <h2>Chọn tình huống: <span id="roleTitle"></span></h2>
+                <button class="back-button" onclick="backToRoleSelection()">← Chọn lại vai trò</button>
+            </div>
+            <div class="scenarios-list" id="scenariosList">
+                <!-- Scenarios will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulation Area -->
+    <section class="simulation-area" id="simulationArea" style="display: none;">
+        <div class="container">
+            <div class="simulation-header">
+                <h2>Tình huống: <span id="scenarioTitle"></span></h2>
+                <div class="current-role">
+                    <span>Vai trò của bạn:</span>
+                    <strong id="currentRole"></strong>
+                </div>
+            </div>
+
+            <div class="scenario-description" id="scenarioDescription">
+                <!-- Description will be populated by JavaScript -->
+            </div>
+
+            <div class="decisions-container">
+                <h3>Các lựa chọn của bạn:</h3>
+                <div class="decisions-grid" id="decisionsGrid">
+                    <!-- Decisions will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="impact-analysis" id="impactAnalysis" style="display: none;">
+                <h3>📊 Phân tích tác động</h3>
+                <div class="impact-grid">
+                    <div class="impact-card employer-impact">
+                        <h4>👔 Tác động đến DN</h4>
+                        <div class="impact-meter">
+                            <div class="meter-fill" id="employerMeter"></div>
+                        </div>
+                        <p id="employerImpact"></p>
+                    </div>
+                    <div class="impact-card worker-impact">
+                        <h4>👷 Tác động đến NLĐ</h4>
+                        <div class="impact-meter">
+                            <div class="meter-fill" id="workerMeter"></div>
+                        </div>
+                        <p id="workerImpact"></p>
+                    </div>
+                    <div class="impact-card state-impact">
+                        <h4>🏛️ Tác động đến Nhà nước</h4>
+                        <div class="impact-meter">
+                            <div class="meter-fill" id="stateMeter"></div>
+                        </div>
+                        <p id="stateImpact"></p>
+                    </div>
+                </div>
+                <div class="conclusion">
+                    <h4>💡 Kết luận</h4>
+                    <p id="conclusionText"></p>
+                </div>
+                <button class="reset-button" onclick="resetSimulation()">Thử tình huống khác</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-main">
+                    Sản phẩm sáng tạo môn học <strong>Kinh tế Chính trị Mác-Lênin</strong>
+                </p>
+                <p class="footer-info">
+                    Sinh viên thực hiện: [Tên SV] | Lớp: [Mã lớp] | GVHD: [Tên GV]
+                </p>
+                <p class="footer-copyright">
+                    © 2025 Lăng kính Lợi ích Kinh tế. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/lab.js"></script>
+</body>
+</html>
