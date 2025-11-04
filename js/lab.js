@@ -118,6 +118,22 @@ const scenarios = {
                         },
                         conclusion: "⚖️ <strong>Mâu thuẫn tạm ổn nhưng không bền vững:</strong> Mâu thuẫn (DN-NLĐ) tạm được giữ ổn định, nhưng mâu thuẫn (DN-Thị trường) tăng lên. Nếu đối thủ tự động hóa, DN sẽ bị đào thải. <strong>Bài học:</strong> Không thể ngăn cản tiến bộ công nghệ, nhưng cần chính sách hỗ trợ NLĐ chuyển đổi."
                     }
+                },
+                {
+                    id: 3,
+                    title: "Mua dây chuyền VÀ đào tạo lại công nhân",
+                    description: "Nâng cấp LLSX đồng thời nâng cấp trình độ lao động, giữ lại 30% công nhân để vận hành máy mới",
+                    impact: {
+                        employer: 60,
+                        worker: 50,
+                        state: 70,
+                        texts: {
+                            employer: "📈 Lợi nhuận tăng (dù chậm hơn sa thải). Chi phí đào tạo ban đầu, nhưng giữ được nhân sự cốt lõi.",
+                            worker: "📈 30% công nhân được nâng cao tay nghề, lương cao hơn. 70% còn lại vẫn được đảm bảo.",
+                            state: "📈 Năng suất quốc gia tăng, có nguồn lao động chất lượng cao. An sinh được đảm bảo."
+                        },
+                        conclusion: "✅ <strong>Giải pháp Thống nhất (Tối ưu):</strong> Đây là cách giải quyết mâu thuẫn do LLSX thay đổi. Thay vì loại bỏ NLĐ, DN đầu tư vào con người. <strong>Bài học:</strong> Lợi ích được hài hòa khi DN và NLĐ cùng phát triển trình độ để thích ứng với Lực lượng sản xuất mới."
+                    }
                 }
             ]
         }

@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/casestudy.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <h1>🔍 Lăng kính Lợi ích Kinh tế</h1>
-                </div>
+                <div class="logo"><h1>🔍 Lăng kính Lợi ích Kinh tế</h1></div>
                 <nav class="nav">
                     <a href="index.html" class="nav-link">Trang chủ</a>
                     <a href="lab.html" class="nav-link">Lab Mô phỏng</a>
@@ -24,15 +26,12 @@
                     <a href="about.html" class="nav-link">Giới thiệu</a>
                 </nav>
                 <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Case Study Hero -->
     <section class="case-hero">
         <div class="container">
             <h1 class="page-title">🗺️ CASE STUDY THỰC TIỄN</h1>
@@ -40,177 +39,33 @@
         </div>
     </section>
 
-    <!-- Filter Section -->
-    <section class="filter-section">
-        <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterCases('all')">Tất cả</button>
-                <button class="filter-btn" onclick="filterCases('environment')">Môi trường</button>
-                <button class="filter-btn" onclick="filterCases('labor')">Lao động</button>
-                <button class="filter-btn" onclick="filterCases('market')">Thị trường</button>
-                <button class="filter-btn" onclick="filterCases('policy')">Chính sách</button>
+    <section class="map-section">
+        <div class="sidebar" id="sidebarNav">
+            <div class="sidebar-header">
+                <h2>Các Tình huống Thực tiễn</h2>
+                <p>Click vào một điểm nóng trên bản đồ, hoặc chọn một sự kiện bên dưới để xem phân tích chi tiết qua lăng kính Lợi ích Kinh tế.</p>
             </div>
+            <div class="case-nav-list" id="caseNavList"></div>
+        </div>
+
+        <div class="sidebar sidebar-analysis" id="sidebarAnalysis">
+            <button class="close-btn" onclick="closeCaseAnalysis()">✕ Quay lại Bản đồ</button>
+            <div class="sidebar-analysis-content" id="analysisContent"></div>
+        </div>
+
+        <div class="map-container" id="mapContainer">
+            <div id="leafletMap" class="leaflet-map"></div>
         </div>
     </section>
-
-    <!-- Case Studies Grid -->
-    <section class="cases-section">
-        <div class="container">
-            <div class="cases-grid" id="casesGrid">
-                <!-- Case 1: Formosa -->
-                <article class="case-card" data-category="environment" onclick="openCase('formosa')">
-                    <div class="case-image formosa-img">
-                        <div class="case-category">Môi trường</div>
-                    </div>
-                    <div class="case-content">
-                        <h3 class="case-title">Vụ Formosa xả thải biển miền Trung (2016)</h3>
-                        <p class="case-excerpt">
-                            Phân tích xung đột lợi ích giữa phát triển kinh tế và bảo vệ môi trường, 
-                            tác động đến ngư dân, DN và chính quyền địa phương.
-                        </p>
-                        <div class="case-meta">
-                            <span class="case-tag">🏭 Doanh nghiệp</span>
-                            <span class="case-tag">🎣 Ngư dân</span>
-                            <span class="case-tag">🏛️ Nhà nước</span>
-                        </div>
-                        <button class="case-read-more">Đọc phân tích →</button>
-                    </div>
-                </article>
-
-                <!-- Case 2: Grab -->
-                <article class="case-card" data-category="market" onclick="openCase('grab')">
-                    <div class="case-image grab-img">
-                        <div class="case-category">Thị trường</div>
-                    </div>
-                    <div class="case-content">
-                        <h3 class="case-title">Grab vs Taxi truyền thống: Cuộc chiến công nghệ</h3>
-                        <p class="case-excerpt">
-                            Sự xung đột giữa mô hình kinh doanh mới và cũ, lợi ích của tài xế, 
-                            khách hàng và doanh nghiệp trong nền kinh tế chia sẻ.
-                        </p>
-                        <div class="case-meta">
-                            <span class="case-tag">🚗 Tài xế</span>
-                            <span class="case-tag">👥 Khách hàng</span>
-                            <span class="case-tag">📱 Công nghệ</span>
-                        </div>
-                        <button class="case-read-more">Đọc phân tích →</button>
-                    </div>
-                </article>
-
-                <!-- Case 3: Giá xăng -->
-                <article class="case-card" data-category="policy" onclick="openCase('gas')">
-                    <div class="case-image gas-img">
-                        <div class="case-category">Chính sách</div>
-                    </div>
-                    <div class="case-content">
-                        <h3 class="case-title">Điều hành giá xăng dầu: Bài toán khó</h3>
-                        <p class="case-excerpt">
-                            Phân tích cơ chế điều hành giá xăng, quỹ bình ổn và mâu thuẫn giữa 
-                            lợi ích người tiêu dùng, DN kinh doanh và ngân sách nhà nước.
-                        </p>
-                        <div class="case-meta">
-                            <span class="case-tag">⛽ Người tiêu dùng</span>
-                            <span class="case-tag">🏭 DN xăng dầu</span>
-                            <span class="case-tag">💰 Ngân sách</span>
-                        </div>
-                        <button class="case-read-more">Đọc phân tích →</button>
-                    </div>
-                </article>
-
-                <!-- Case 4: Lương tối thiểu -->
-                <article class="case-card" data-category="labor" onclick="openCase('minimum-wage')">
-                    <div class="case-image wage-img">
-                        <div class="case-category">Lao động</div>
-                    </div>
-                    <div class="case-content">
-                        <h3 class="case-title">Tăng lương tối thiểu vùng: Ai được, ai mất?</h3>
-                        <p class="case-excerpt">
-                            Cơ chế tăng lương tối thiểu và tác động đến người lao động, 
-                            doanh nghiệp, đặc biệt là DN nhỏ và vừa.
-                        </p>
-                        <div class="case-meta">
-                            <span class="case-tag">👷 Người lao động</span>
-                            <span class="case-tag">🏢 SME</span>
-                            <span class="case-tag">⚖️ Công đoàn</span>
-                        </div>
-                        <button class="case-read-more">Đọc phân tích →</button>
-                    </div>
-                </article>
-
-                <!-- Case 5: Giá điện -->
-                <article class="case-card" data-category="policy" onclick="openCase('electricity')">
-                    <div class="case-image electric-img">
-                        <div class="case-category">Chính sách</div>
-                    </div>
-                    <div class="case-content">
-                        <h3 class="case-title">Điều chỉnh giá điện sinh hoạt: Tranh cãi không hồi kết</h3>
-                        <p class="case-excerpt">
-                            Phân tích lợi ích của EVN, người tiêu dùng, DN sản xuất và vai trò 
-                            điều tiết của Nhà nước trong ngành điện.
-                        </p>
-                        <div class="case-meta">
-                            <span class="case-tag">⚡ EVN</span>
-                            <span class="case-tag">🏠 Hộ dân</span>
-                            <span class="case-tag">🏭 DN sản xuất</span>
-                        </div>
-                        <button class="case-read-more">Đọc phân tích →</button>
-                    </div>
-                </article>
-
-                <!-- Case 6: Thương mại điện tử -->
-                <article class="case-card" data-category="market" onclick="openCase('ecommerce')">
-                    <div class="case-image ecommerce-img">
-                        <div class="case-category">Thị trường</div>
-                    </div>
-                    <div class="case-content">
-                        <h3 class="case-title">Shopee, Tiki và bán hàng online: Ai hưởng lợi?</h3>
-                        <p class="case-excerpt">
-                            Sự thay đổi trong chuỗi phân phối, lợi ích của người bán, 
-                            người mua và nền tảng TMĐT.
-                        </p>
-                        <div class="case-meta">
-                            <span class="case-tag">🛒 Người mua</span>
-                            <span class="case-tag">🏪 Người bán</span>
-                            <span class="case-tag">📦 Nền tảng</span>
-                        </div>
-                        <button class="case-read-more">Đọc phân tích →</button>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Detail Modal -->
-    <div class="modal" id="caseModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeCase()">&times;</span>
-            <div class="modal-body" id="modalBody">
-                <!-- Content will be loaded here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-main">
-                    Sản phẩm sáng tạo môn học <strong>Kinh tế Chính trị Mác-Lênin</strong>
-                </p>
-                <p class="footer-info">
-                    Sinh viên thực hiện: [Tên SV] | Lớp: [Mã lớp] | GVHD: [Tên GV]
-                </p>
-                <p class="footer-disclaimer">
-                    <em>Mọi thông tin trong "Case Study" và "Diễn đàn" chỉ phục vụ mục đích học thuật.</em>
-                </p>
-                <p class="footer-copyright">
-                    © 2025 Lăng kính Lợi ích Kinh tế. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
 
     <script src="js/script.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    
+    <script src="js/casestudy-data.js"></script>
     <script src="js/casestudy.js"></script>
 </body>
 </html>
