@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandbox: Người Cân bằng Lợi ích</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/sandbox.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🔍 Lăng kính Lợi ích Kinh tế</h1>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Trang chủ</a>
+                    <a href="lab.html" class="nav-link">Lab Mô phỏng</a>
+                    <a href="casestudy.html" class="nav-link">Case Study</a>
+                    <a href="sandbox.html" class="nav-link active">Sandbox</a>
+                    <a href="about.html" class="nav-link">Giới thiệu</a>
+                </nav>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sandbox Hero -->
+    <section class="sandbox-hero">
+        <div class="container">
+            <h1 class="page-title">🎮 SANDBOX: NGƯỜI CÂN BẰNG LỢI ÍCH</h1>
+            <p class="page-subtitle">Bạn là Nhà nước - Hãy điều chỉnh chính sách để hài hòa lợi ích của cả 3 bên!</p>
+            <div class="game-objective">
+                <h3>🎯 Mục tiêu:</h3>
+                <p>Đưa <strong>cả 3 thanh Lợi ích</strong> lên vùng <span class="green-text">Xanh (trên 60 điểm)</span> và giữ chúng ổn định.</p>
+                <p class="hint">💡 <em>Mẹo: Không nên kéo bất kỳ chính sách nào lên mức tối đa...</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Area -->
+    <section class="game-area">
+        <div class="container">
+            <!-- Display Area (Top 40%) -->
+            <div class="display-area">
+                <h2 class="dashboard-title">📊 BẢNG ĐIỀU KHIỂN LỢI ÍCH QUỐC GIA</h2>
+                
+                <!-- Harmony Score (Center) -->
+                <div class="harmony-score">
+                    <div class="harmony-circle">
+                        <div class="score-value" id="harmonyScore">50</div>
+                        <div class="score-label">Điểm Hài hòa</div>
+                    </div>
+                    <div class="secret-timer" id="secretTimer" style="display: none;">
+                        <div class="timer-icon">⏱️</div>
+                        <div class="timer-text">Giữ vững trong <span id="timerCount">10</span>s...</div>
+                    </div>
+                </div>
+
+                <!-- 3 Interest Bars -->
+                <div class="interest-bars">
+                    <!-- Doanh nghiệp -->
+                    <div class="interest-bar-container">
+                        <div class="bar-header">
+                            <span class="bar-icon">👔</span>
+                            <span class="bar-title">LIKT Doanh nghiệp (Lợi nhuận)</span>
+                            <span class="bar-value" id="businessValue">50</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill business-bar" id="businessBar" style="width: 50%;">
+                                <div class="bar-shine"></div>
+                            </div>
+                        </div>
+                        <div class="bar-labels">
+                            <span class="label-red">Nguy hiểm (0-30)</span>
+                            <span class="label-yellow">Bất ổn (31-60)</span>
+                            <span class="label-green">Hài hòa (61-100)</span>
+                        </div>
+                    </div>
+
+                    <!-- Người Lao động -->
+                    <div class="interest-bar-container">
+                        <div class="bar-header">
+                            <span class="bar-icon">👷</span>
+                            <span class="bar-title">LIKT Người Lao động (Thu nhập)</span>
+                            <span class="bar-value" id="workerValue">50</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill worker-bar" id="workerBar" style="width: 50%;">
+                                <div class="bar-shine"></div>
+                            </div>
+                        </div>
+                        <div class="bar-labels">
+                            <span class="label-red">Nguy hiểm (0-30)</span>
+                            <span class="label-yellow">Bất ổn (31-60)</span>
+                            <span class="label-green">Hài hòa (61-100)</span>
+                        </div>
+                    </div>
+
+                    <!-- Xã hội -->
+                    <div class="interest-bar-container">
+                        <div class="bar-header">
+                            <span class="bar-icon">🏛️</span>
+                            <span class="bar-title">LIKT Xã hội (An sinh/Môi trường)</span>
+                            <span class="bar-value" id="societyValue">50</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill society-bar" id="societyBar" style="width: 50%;">
+                                <div class="bar-shine"></div>
+                            </div>
+                        </div>
+                        <div class="bar-labels">
+                            <span class="label-red">Nguy hiểm (0-30)</span>
+                            <span class="label-yellow">Bất ổn (31-60)</span>
+                            <span class="label-green">Hài hòa (61-100)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Area (Bottom 60%) -->
+            <div class="control-area">
+                <h2 class="control-title">🎛️ CÁC CÔNG CỤ ĐIỀU TIẾT (Phương thức 2)</h2>
+                
+                <div class="sliders-grid">
+                    <!-- Slider 1: Thuế TNDN -->
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <span class="slider-icon">💰</span>
+                            <span class="slider-title">Thuế Thu nhập Doanh nghiệp</span>
+                        </div>
+                        <div class="slider-value-display">
+                            <span id="taxValue">15</span>%
+                        </div>
+                        <input type="range" 
+                               class="policy-slider" 
+                               id="taxSlider" 
+                               min="5" 
+                               max="30" 
+                               value="15" 
+                               step="1">
+                        <div class="slider-labels">
+                            <span>5% (Ưu đãi)</span>
+                            <span>30% (Rất cao)</span>
+                        </div>
+                        <div class="slider-description">
+                            Tăng thuế → Ngân sách ↑ nhưng DN ↓
+                        </div>
+                    </div>
+
+                    <!-- Slider 2: Lương Tối thiểu -->
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <span class="slider-icon">💵</span>
+                            <span class="slider-title">Lương Tối thiểu</span>
+                        </div>
+                        <div class="slider-value-display">
+                            <span id="wageLabel">Trung bình</span>
+                        </div>
+                        <input type="range" 
+                               class="policy-slider" 
+                               id="wageSlider" 
+                               min="0" 
+                               max="100" 
+                               value="50" 
+                               step="10">
+                        <div class="slider-labels">
+                            <span>Thấp (Tự do)</span>
+                            <span>Rất cao (Bảo vệ)</span>
+                        </div>
+                        <div class="slider-description">
+                            Tăng lương → NLĐ ↑ nhưng DN ↓
+                        </div>
+                    </div>
+
+                    <!-- Slider 3: Tiêu chuẩn Môi trường -->
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <span class="slider-icon">🌱</span>
+                            <span class="slider-title">Tiêu chuẩn Môi trường</span>
+                        </div>
+                        <div class="slider-value-display">
+                            <span id="envLabel">Trung bình</span>
+                        </div>
+                        <input type="range" 
+                               class="policy-slider" 
+                               id="envSlider" 
+                               min="0" 
+                               max="100" 
+                               value="50" 
+                               step="10">
+                        <div class="slider-labels">
+                            <span>Lỏng lẻo (Thu hút ĐT)</span>
+                            <span>Nghiêm ngặt (Bền vững)</span>
+                        </div>
+                        <div class="slider-description">
+                            Tăng tiêu chuẩn → XH ↑ nhưng DN ↓
+                        </div>
+                    </div>
+
+                    <!-- Slider 4: Chi Phúc lợi Xã hội -->
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <span class="slider-icon">🏥</span>
+                            <span class="slider-title">Chi Phúc lợi Xã hội</span>
+                        </div>
+                        <div class="slider-value-display">
+                            <span id="welfareLabel">Trung bình</span>
+                        </div>
+                        <input type="range" 
+                               class="policy-slider" 
+                               id="welfareSlider" 
+                               min="0" 
+                               max="100" 
+                               value="50" 
+                               step="10">
+                        <div class="slider-labels">
+                            <span>Thấp (Tiết kiệm)</span>
+                            <span>Cao (Bao cấp)</span>
+                        </div>
+                        <div class="slider-description">
+                            Tăng phúc lợi → NLĐ ↑ XH ↑ nhưng DN ↓
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reset Button -->
+                <div class="game-controls">
+                    <button class="reset-button" onclick="resetGame()">🔄 Đặt lại chính sách</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secret Ending Modal -->
+    <div class="modal secret-modal" id="secretModal">
+        <div class="modal-content secret-content">
+            <div class="confetti-container" id="confetti"></div>
+            <div class="secret-header">
+                <div class="trophy-icon">🏆</div>
+                <h2>CHÚC MỪNG!</h2>
+                <h3>BẠN ĐÃ ĐẠT ĐƯỢC SỰ HÀI HÒA!</h3>
+            </div>
+            <div class="secret-body">
+                <p class="secret-intro">
+                    <strong>Bạn đã khám phá ra bí mật của người quản lý vĩ mô!</strong>
+                </p>
+                <div class="theory-box-secret">
+                    <p>
+                        Trong <strong>Kinh tế Chính trị Mác-Lênin</strong>, <em>mâu thuẫn lợi ích</em> 
+                        là <strong>tất yếu, khách quan</strong>. Không thể có một xã hội mà LIKT Doanh nghiệp 
+                        (Lợi nhuận) và LIKT Người Lao động (Thu nhập) cùng đạt 100 điểm, vì chúng 
+                        <strong>mâu thuẫn trong phân phối</strong>.
+                    </p>
+                    <p>
+                        Vai trò của <strong>Nhà nước</strong> (Phương thức 2) không phải là "xóa bỏ" mâu thuẫn, 
+                        mà là <strong class="highlight">"HÀI HÒA"</strong> chúng.
+                    </p>
+                    <p>
+                        Bạn đã thành công giữ các lợi ích ở trạng thái <strong>cân bằng động</strong>, 
+                        nơi không ai bị bỏ lại, không ai phá vỡ hệ thống.
+                    </p>
+                    <p class="final-message">
+                        🎯 Bạn chính là một <strong>Nhà Cân bằng Lợi ích</strong>!
+                    </p>
+                </div>
+                <div class="achievement-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">👔</div>
+                        <div class="stat-label">LIKT DN</div>
+                        <div class="stat-value" id="finalBusiness">--</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">👷</div>
+                        <div class="stat-label">LIKT NLĐ</div>
+                        <div class="stat-value" id="finalWorker">--</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">🏛️</div>
+                        <div class="stat-label">LIKT XH</div>
+                        <div class="stat-value" id="finalSociety">--</div>
+                    </div>
+                </div>
+            </div>
+            <div class="secret-footer">
+                <button class="continue-button" onclick="closeSecretModal()">Tiếp tục chơi</button>
+                <button class="share-button" onclick="shareAchievement()">📱 Chia sẻ thành tích</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-main">
+                    Sản phẩm sáng tạo môn học <strong>Kinh tế Chính trị Mác-Lênin</strong>
+                </p>
+                <p class="footer-info">
+                    Sinh viên thực hiện: [Tên SV] | Lớp: [Mã lớp] | GVHD: [Tên GV]
+                </p>
+                <p class="footer-copyright">
+                    © 2025 Lăng kính Lợi ích Kinh tế. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/sandbox.js"></script>
+</body>
+</html>
