@@ -61,10 +61,9 @@ function initializeMap() {
                 className: 'custom-tooltip'
             });
         
-        // Click event
+        // Click event - zoom sẽ được xử lý trong openCaseAnalysis
         marker.on('click', function() {
             openCaseAnalysis(caseData.id);
-            map.flyTo(coords, 8, { duration: 1 });
         });
         
         markers[caseData.id] = marker;
@@ -88,6 +87,50 @@ function openCaseAnalysis(caseId) {
     const sidebarNav = document.getElementById('sidebarNav');
     const analysisSidebar = document.getElementById('sidebarAnalysis');
     const analysisContent = document.getElementById('analysisContent');
+    
+    // Get coordinates for this case
+    const coords = locationCoords[caseId];
+    
+    // Zoom to location với mức zoom phù hợp
+    if (map && coords) {
+        // Xác định zoom level dựa trên loại case
+        let zoomLevel = 8; // Default zoom
+        
+        // Các case khu vực rộng (miền Bắc, ĐBSCL) zoom xa hơn
+        if (caseId === 'thieu-dien' || caseId === 'sot-gia-gao' || caseId === 'grab-taxi') {
+            zoomLevel = 7;
+        }
+        // Các case cụ thể tại một địa điểm zoom gần hơn
+        else if (caseId === 'formosa' || caseId === 'thu-thiem' || caseId === 'van-thinh-phat') {
+            zoomLevel = 9;
+        }
+        
+        // Tính toán offset để zoom vào giữa màn hình (tính đến sidebar 400px)
+        const sidebarWidth = 400; // Width của sidebar
+        const mapContainer = document.getElementById('mapContainer');
+        const containerWidth = mapContainer ? mapContainer.offsetWidth : window.innerWidth;
+        
+        // Offset x (dịch sang phải để căn giữa phần bản đồ còn lại)
+        const offsetX = sidebarWidth / 2;
+        
+        // Convert pixel offset to latlng offset
+        const targetPoint = map.project(coords, zoomLevel);
+        const targetLatLng = map.unproject([targetPoint.x - offsetX, targetPoint.y], zoomLevel);
+        
+        // Smooth fly animation đến vị trí đã offset
+        map.flyTo(targetLatLng, zoomLevel, {
+            duration: 1.2,
+            easeLinearity: 0.25
+        });
+        
+        // Highlight marker sau khi zoom
+        setTimeout(function() {
+            const marker = markers[caseId];
+            if (marker) {
+                marker.openTooltip();
+            }
+        }, 600);
+    }
     
     // Highlight active marker
     Object.keys(markers).forEach(function(id) {

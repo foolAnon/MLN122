@@ -39,14 +39,31 @@
     border-radius: 20px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-md);
     border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.role-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.role-card:hover::before {
+    left: 100%;
 }
 
 .role-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--shadow-2xl);
     border-color: #667eea;
 }
 
@@ -251,16 +268,43 @@
     border-radius: 15px;
     border: 2px solid #e2e8f0;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: flex-start;
     gap: 1rem;
+    position: relative;
+}
+
+.decision-option::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #667eea;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    border-radius: 15px 0 0 15px;
+}
+
+.decision-option:hover::before,
+.decision-option:has(input:checked)::before {
+    transform: scaleY(1);
 }
 
 .decision-option:hover {
     border-color: #667eea;
+    box-shadow: var(--shadow-lg);
+    transform: translateX(8px);
+    background: rgba(102, 126, 234, 0.02);
+}
+
+.decision-option:has(input:checked) {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
     box-shadow: var(--shadow-md);
-    transform: translateX(5px);
 }
 
 .decision-option input[type="radio"] {
