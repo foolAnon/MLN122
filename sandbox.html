@@ -239,37 +239,18 @@
         </div>
     </section>
 
-    <!-- Secret Ending Modal -->
-    <div class="modal secret-modal" id="secretModal">
-        <div class="modal-content secret-content">
+    <!-- Universal Ending Modal -->
+    <div class="modal ending-modal" id="endingModal">
+        <div class="modal-content ending-content">
             <div class="confetti-container" id="confetti"></div>
-            <div class="secret-header">
-                <div class="trophy-icon">🏆</div>
-                <h2>CHÚC MỪNG!</h2>
-                <h3>BẠN ĐÃ ĐẠT ĐƯỢC SỰ HÀI HÒA!</h3>
+            <div class="ending-header">
+                <div class="ending-icon-large" id="endingIcon">🏆</div>
+                <h2 id="endingTitle">CHÚC MỪNG!</h2>
+                <h3 id="endingSubtitle">BẠN ĐÃ ĐẠT ĐƯỢC SỰ HÀI HÒA!</h3>
             </div>
-            <div class="secret-body">
-                <p class="secret-intro">
-                    <strong>Bạn đã khám phá ra bí mật của người quản lý vĩ mô!</strong>
-                </p>
-                <div class="theory-box-secret">
-                    <p>
-                        Trong <strong>Kinh tế Chính trị Mác-Lênin</strong>, <em>mâu thuẫn lợi ích</em> 
-                        là <strong>tất yếu, khách quan</strong>. Không thể có một xã hội mà LIKT Doanh nghiệp 
-                        (Lợi nhuận) và LIKT Người Lao động (Thu nhập) cùng đạt 100 điểm, vì chúng 
-                        <strong>mâu thuẫn trong phân phối</strong>.
-                    </p>
-                    <p>
-                        Vai trò của <strong>Nhà nước</strong> (Phương thức 2) không phải là "xóa bỏ" mâu thuẫn, 
-                        mà là <strong class="highlight">"HÀI HÒA"</strong> chúng.
-                    </p>
-                    <p>
-                        Bạn đã thành công giữ các lợi ích ở trạng thái <strong>cân bằng động</strong>, 
-                        nơi không ai bị bỏ lại, không ai phá vỡ hệ thống.
-                    </p>
-                    <p class="final-message">
-                        🎯 Bạn chính là một <strong>Nhà Cân bằng Lợi ích</strong>!
-                    </p>
+            <div class="ending-body">
+                <div id="endingMessage">
+                    <!-- Nội dung sẽ được load từ JS -->
                 </div>
                 <div class="achievement-stats">
                     <div class="stat-item">
@@ -289,8 +270,8 @@
                     </div>
                 </div>
             </div>
-            <div class="secret-footer">
-                <button class="continue-button" onclick="closeSecretModal()">Tiếp tục chơi</button>
+            <div class="ending-footer">
+                <button class="continue-button" onclick="closeEndingModal()">Tiếp tục chơi</button>
                 <button class="share-button" onclick="shareAchievement()">📱 Chia sẻ thành tích</button>
             </div>
         </div>

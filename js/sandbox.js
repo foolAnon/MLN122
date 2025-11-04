@@ -13,10 +13,21 @@ let gameState = {
     welfare: 50        // Chi phúc lợi xã hội (0-100)
 };
 
-// Secret Ending State
+// Ending States
 let secretTimer = null;
 let secretCountdown = 10;
 let isInGreenZone = false;
+
+// Other Endings Timers
+let endingTimers = {
+    capitalist: { timer: null, countdown: 3, active: false },
+    socialist: { timer: null, countdown: 3, active: false },
+    chaos: { timer: null, countdown: 3, active: false },
+    inflation: { timer: null, countdown: 5, active: false },
+    green: { timer: null, countdown: 5, active: false }
+};
+
+let endingTriggered = false; // Prevent multiple endings
 
 // ========================================
 // INITIALIZATION
@@ -188,7 +199,7 @@ function calculateImpacts() {
     // 5. UPDATE UI
     // ==========================================
     updateAllDisplays();
-    checkSecretEnding();
+    checkAllEndings();
 }
 
 // ========================================
@@ -223,27 +234,123 @@ function updateBar(barId, value) {
 }
 
 // ========================================
-// SECRET ENDING CHECK
+// CHECK ALL ENDINGS
 // ========================================
-function checkSecretEnding() {
+function checkAllEndings() {
+    if (endingTriggered) return; // Đã có ending được kích hoạt
+    
+    // Priority order: Chaos > Secret > Inflation > Capitalist/Socialist > Green
+    
+    // 1. CHAOS ENDING (Ưu tiên cao nhất - tình huống tồi tệ nhất)
+    const isChaos = gameState.business <= 30 && 
+                    gameState.worker <= 30 && 
+                    gameState.society <= 30;
+    
+    if (isChaos) {
+        startEndingTimer('chaos');
+        return;
+    } else {
+        stopEndingTimer('chaos');
+    }
+    
+    // 2. SECRET ENDING (Mục tiêu chính)
     const allGreen = gameState.business > 60 && 
                      gameState.worker > 60 && 
                      gameState.society > 60;
-
+    
     if (allGreen && !isInGreenZone) {
-        // Bắt đầu đếm ngược
         isInGreenZone = true;
         secretCountdown = 10;
         document.getElementById('secretTimer').style.display = 'flex';
         startSecretTimer();
     } else if (!allGreen && isInGreenZone) {
-        // Rời khỏi vùng xanh → Reset
         isInGreenZone = false;
         stopSecretTimer();
         document.getElementById('secretTimer').style.display = 'none';
     }
+    
+    // 3. INFLATION ENDING (Lạm phát)
+    const highPolicyCount = [
+        gameState.tax >= 25,
+        gameState.wage >= 80,
+        gameState.environment >= 80,
+        gameState.welfare >= 80
+    ].filter(Boolean).length;
+    
+    const isInflation = highPolicyCount >= 3;
+    
+    if (isInflation) {
+        startEndingTimer('inflation');
+    } else {
+        stopEndingTimer('inflation');
+    }
+    
+    // 4. CAPITALIST ENDING (Thiên đường DN)
+    const isCapitalist = gameState.business >= 80 && gameState.worker <= 30;
+    
+    if (isCapitalist) {
+        startEndingTimer('capitalist');
+    } else {
+        stopEndingTimer('capitalist');
+    }
+    
+    // 5. SOCIALIST ENDING (Thiên đường NLĐ)
+    const isSocialist = gameState.worker >= 80 && gameState.business <= 30;
+    
+    if (isSocialist) {
+        startEndingTimer('socialist');
+    } else {
+        stopEndingTimer('socialist');
+    }
+    
+    // 6. GREEN ENDING (Phát triển bền vững)
+    const isGreen = gameState.society >= 80 && gameState.environment >= 70;
+    
+    if (isGreen) {
+        startEndingTimer('green');
+    } else {
+        stopEndingTimer('green');
+    }
 }
 
+// ========================================
+// ENDING TIMER MANAGEMENT
+// ========================================
+function startEndingTimer(endingType) {
+    const ending = endingTimers[endingType];
+    
+    if (ending.active) return; // Đã đang đếm ngược
+    
+    ending.active = true;
+    ending.countdown = endingType === 'capitalist' || endingType === 'socialist' || endingType === 'chaos' ? 3 : 5;
+    
+    ending.timer = setInterval(function() {
+        ending.countdown--;
+        
+        if (ending.countdown <= 0) {
+            clearInterval(ending.timer);
+            ending.timer = null;
+            ending.active = false;
+            showEnding(endingType);
+        }
+    }, 1000);
+}
+
+function stopEndingTimer(endingType) {
+    const ending = endingTimers[endingType];
+    
+    if (ending.timer) {
+        clearInterval(ending.timer);
+        ending.timer = null;
+    }
+    
+    ending.active = false;
+    ending.countdown = endingType === 'capitalist' || endingType === 'socialist' || endingType === 'chaos' ? 3 : 5;
+}
+
+// ========================================
+// SECRET ENDING (Original)
+// ========================================
 function startSecretTimer() {
     if (secretTimer) clearInterval(secretTimer);
     
@@ -253,7 +360,7 @@ function startSecretTimer() {
 
         if (secretCountdown <= 0) {
             stopSecretTimer();
-            showSecretEnding();
+            showEnding('secret');
         }
     }, 1000);
 }
@@ -268,37 +375,180 @@ function stopSecretTimer() {
 }
 
 // ========================================
-// SECRET ENDING MODAL
+// SHOW ENDING MODAL
 // ========================================
-function showSecretEnding() {
-    const modal = document.getElementById('secretModal');
+function showEnding(endingType) {
+    endingTriggered = true;
     
-    // Update final stats
+    const modal = document.getElementById('endingModal');
+    const endingData = getEndingData(endingType);
+    
+    // Update modal content
+    document.getElementById('endingIcon').textContent = endingData.icon;
+    document.getElementById('endingTitle').textContent = endingData.title;
+    document.getElementById('endingSubtitle').textContent = endingData.subtitle;
+    document.getElementById('endingMessage').innerHTML = endingData.message;
+    
+    // Update stats
     document.getElementById('finalBusiness').textContent = Math.round(gameState.business);
     document.getElementById('finalWorker').textContent = Math.round(gameState.worker);
     document.getElementById('finalSociety').textContent = Math.round(gameState.society);
-
-    // Show modal with animation
+    
+    // Update modal theme
+    const modalContent = modal.querySelector('.modal-content');
+    modalContent.className = 'modal-content ending-content ' + endingType + '-ending';
+    
+    // Show modal
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
-
-    // Create confetti
-    createConfetti();
-
+    
+    // Create confetti for positive endings
+    if (['secret', 'green'].includes(endingType)) {
+        createConfetti();
+    }
+    
     // Hide timer
     document.getElementById('secretTimer').style.display = 'none';
 }
 
-function closeSecretModal() {
-    const modal = document.getElementById('secretModal');
+function getEndingData(endingType) {
+    const endings = {
+        secret: {
+            icon: '🏆',
+            title: 'CHÚC MỪNG!',
+            subtitle: 'BẠN ĐÃ ĐẠT ĐƯỢC SỰ HÀI HÒA!',
+            message: `
+                <p class="ending-intro"><strong>Bạn đã khám phá ra bí mật của người quản lý vĩ mô!</strong></p>
+                <div class="theory-box-ending">
+                    <p>Trong <strong>Kinh tế Chính trị Mác-Lênin</strong>, <em>mâu thuẫn lợi ích</em> 
+                    là <strong>tất yếu, khách quan</strong>. Không thể có một xã hội mà LIKT Doanh nghiệp 
+                    (Lợi nhuận) và LIKT Người Lao động (Thu nhập) cùng đạt 100 điểm, vì chúng 
+                    <strong>mâu thuẫn trong phân phối</strong>.</p>
+                    <p>Vai trò của <strong>Nhà nước</strong> (Phương thức 2) không phải là "xóa bỏ" mâu thuẫn, 
+                    mà là <strong class="highlight">"HÀI HÒA"</strong> chúng.</p>
+                    <p>Bạn đã thành công giữ các lợi ích ở trạng thái <strong>cân bằng động</strong>, 
+                    nơi không ai bị bỏ lại, không ai phá vỡ hệ thống.</p>
+                    <p class="final-message">🎯 Bạn chính là một <strong>Nhà Cân bằng Lợi ích</strong>!</p>
+                </div>
+            `
+        },
+        capitalist: {
+            icon: '💰',
+            title: 'THIÊN ĐƯỜNG DOANH NGHIỆP',
+            subtitle: 'Bạn đã tạo ra một nền kinh tế tư bản chủ nghĩa thuần túy',
+            message: `
+                <p class="ending-intro"><strong>Doanh nghiệp thịnh vượng, nhưng người lao động đói khổ...</strong></p>
+                <div class="theory-box-ending warning">
+                    <p>Bạn đã ưu tiên <strong>lợi ích Doanh nghiệp</strong> quá mức, dẫn đến:</p>
+                    <ul>
+                        <li>💸 <strong>Bóc lột giá trị thặng dư:</strong> NLĐ làm việc nhưng không được hưởng thành quả</li>
+                        <li>⚔️ <strong>Mâu thuẫn giai cấp gay gắt:</strong> Khoảng cách giàu - nghèo tăng vọt</li>
+                        <li>💥 <strong>Nguy cơ bất ổn:</strong> Đình công, biểu tình, bạo loạn xã hội</li>
+                        <li>📉 <strong>Khủng hoảng dài hạn:</strong> NLĐ không có sức mua → DN cũng suy thoái</li>
+                    </ul>
+                    <p class="final-message">⚠️ <strong>Bài học:</strong> Không thể phát triển bền vững khi chỉ một bên được hưởng lợi!</p>
+                </div>
+            `
+        },
+        socialist: {
+            icon: '⚒️',
+            title: 'THIÊN ĐƯỜNG NGƯỜI LAO ĐỘNG',
+            subtitle: 'Bạn đã bảo vệ NLĐ quá mức, làm DN sụp đổ',
+            message: `
+                <p class="ending-intro"><strong>Người lao động được bảo vệ tốt, nhưng nền kinh tế đình trệ...</strong></p>
+                <div class="theory-box-ending warning">
+                    <p>Bạn đã ưu tiên <strong>lợi ích Người lao động</strong> quá mức, dẫn đến:</p>
+                    <ul>
+                        <li>📉 <strong>Doanh nghiệp phá sản hàng loạt:</strong> Chi phí quá cao, không thể cạnh tranh</li>
+                        <li>🏭 <strong>Sản xuất đình trệ:</strong> Không có DN → Không có việc làm</li>
+                        <li>💼 <strong>Thất nghiệp gia tăng:</strong> Nghịch lý: Bảo vệ NLĐ nhưng NLĐ mất việc</li>
+                        <li>🌍 <strong>Đầu tư nước ngoài rút lui:</strong> Môi trường kinh doanh không hấp dẫn</li>
+                    </ul>
+                    <p class="final-message">⚠️ <strong>Bài học:</strong> Phải có DN phát triển thì mới có việc làm cho NLĐ!</p>
+                </div>
+            `
+        },
+        chaos: {
+            icon: '💥',
+            title: 'SỤP ĐỔ TOÀN DIỆN',
+            subtitle: 'Khủng hoảng kinh tế - xã hội',
+            message: `
+                <p class="ending-intro"><strong>Chính sách thảm họa đã phá hủy toàn bộ nền kinh tế!</strong></p>
+                <div class="theory-box-ending danger">
+                    <p>Cả 3 nhóm lợi ích đều ở mức nguy hiểm. Hậu quả:</p>
+                    <ul>
+                        <li>🏭 <strong>DN phá sản hàng loạt:</strong> Không còn sản xuất, không còn thuế</li>
+                        <li>💔 <strong>NLĐ thất nghiệp, đói nghèo:</strong> Không có thu nhập, không có tương lai</li>
+                        <li>🔥 <strong>Xã hội hỗn loạn:</strong> Biểu tình, bạo loạn, mất trật tự</li>
+                        <li>💸 <strong>Nhà nước phá sản:</strong> Không có ngân sách, không thể điều hành</li>
+                    </ul>
+                    <p class="final-message">💀 <strong>Bài học:</strong> Đây là thảm họa khi Nhà nước thất bại trong vai trò điều tiết!</p>
+                </div>
+            `
+        },
+        inflation: {
+            icon: '📉',
+            title: 'LẠM PHÁT SIÊU CẤP',
+            subtitle: 'Chi tiêu vượt thu → Tiền mất giá',
+            message: `
+                <p class="ending-intro"><strong>Bạn đã cố gắng làm hài lòng tất cả, nhưng...</strong></p>
+                <div class="theory-box-ending warning">
+                    <p>Khi <strong>tất cả chính sách đều cao</strong> (Thuế cao + Lương cao + Phúc lợi cao), dẫn đến:</p>
+                    <ul>
+                        <li>💸 <strong>Chi phí vượt ngân sách:</strong> Nhà nước phải in tiền để bù đắp</li>
+                        <li>📈 <strong>Lạm phát tăng vọt:</strong> Tiền mất giá, giá cả tăng phi mã</li>
+                        <li>💔 <strong>Cả 3 bên đều thiệt:</strong> DN lỗ, NLĐ nghèo (dù lương cao), XH hỗn loạn</li>
+                        <li>🌍 <strong>Khủng hoảng kinh tế:</strong> Tương tự Venezuela, Zimbabwe</li>
+                    </ul>
+                    <p class="final-message">⚠️ <strong>Bài học:</strong> Không thể có bữa trưa miễn phí! Phải cân bằng giữa chi và thu.</p>
+                </div>
+            `
+        },
+        green: {
+            icon: '🌍',
+            title: 'NHÀ NƯỚC XANH',
+            subtitle: 'Phát triển bền vững & An sinh xã hội',
+            message: `
+                <p class="ending-intro"><strong>Bạn đã tạo ra một xã hội bền vững, thân thiện với môi trường!</strong></p>
+                <div class="theory-box-ending success">
+                    <p>Bằng cách ưu tiên <strong>Xã hội & Môi trường</strong>, bạn đã đạt được:</p>
+                    <ul>
+                        <li>🌱 <strong>Môi trường trong lành:</strong> Không khí sạch, nước sạch, đất tốt</li>
+                        <li>🏥 <strong>An sinh xã hội cao:</strong> Y tế, giáo dục, phúc lợi đầy đủ</li>
+                        <li>📈 <strong>Phát triển dài hạn:</strong> Không hy sinh tương lai vì hiện tại</li>
+                        <li>🌏 <strong>Gương mẫu quốc tế:</strong> Tương tự Bắc Âu, New Zealand</li>
+                    </ul>
+                    <p class="final-message">✅ <strong>Bài học:</strong> Phát triển bền vững là con đường đúng đắn cho tương lai!</p>
+                </div>
+            `
+        }
+    };
+    
+    return endings[endingType];
+}
+
+// ========================================
+// CLOSE ENDING MODAL
+// ========================================
+function closeEndingModal() {
+    const modal = document.getElementById('endingModal');
     modal.classList.remove('show');
     document.body.style.overflow = 'auto';
     
-    // Reset secret state
+    // Reset ending state
+    endingTriggered = false;
     isInGreenZone = false;
     secretCountdown = 10;
+    
+    // Stop all timers
+    Object.keys(endingTimers).forEach(key => {
+        stopEndingTimer(key);
+    });
 }
 
+// ========================================
+// CONFETTI ANIMATION
+// ========================================
 function createConfetti() {
     const container = document.getElementById('confetti');
     container.innerHTML = ''; // Clear old confetti
@@ -387,10 +637,16 @@ function resetGame() {
     updateEnvLabel(50);
     updateWelfareLabel(50);
 
-    // Reset secret timer
+    // Reset secret timer and ending states
+    endingTriggered = false;
     isInGreenZone = false;
     stopSecretTimer();
     document.getElementById('secretTimer').style.display = 'none';
+    
+    // Stop all ending timers
+    Object.keys(endingTimers).forEach(key => {
+        stopEndingTimer(key);
+    });
 
     // Update displays
     updateAllDisplays();
