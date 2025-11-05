@@ -446,6 +446,10 @@ body {
     background: var(--gradient-3);
 }
 
+.video-card::before {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
 .module-card:hover {
     transform: translateY(-12px) scale(1.02);
     box-shadow: var(--shadow-2xl);
@@ -484,6 +488,10 @@ body {
 
 .forum-card .module-title {
     color: #00f2fe;
+}
+
+.video-card .module-title {
+    color: #f5576c;
 }
 
 .module-question {
@@ -531,6 +539,10 @@ body {
 
 .forum-button {
     background: var(--gradient-3);
+}
+
+.video-button {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
 .module-button:hover {
