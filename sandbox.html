@@ -35,12 +35,13 @@
     <!-- Sandbox Hero -->
     <section class="sandbox-hero">
         <div class="container">
-            <h1 class="page-title">🎮 SANDBOX: NGƯỜI CÂN BẰNG LỢI ÍCH</h1>
-            <p class="page-subtitle">Bạn là Nhà nước - Hãy điều chỉnh chính sách để hài hòa lợi ích của cả 3 bên!</p>
+            <h1 class="page-title">🎮 SANDBOX: 12 THÁNG - NGƯỜI CÂN BẰNG LỢI ÍCH</h1>
+            <p class="page-subtitle">Bạn là Nhà nước - Điều chỉnh chính sách qua 12 tháng để hài hòa lợi ích!</p>
+            <div class="month-counter" id="currentMonth">Tháng 1/12</div>
             <div class="game-objective">
                 <h3>🎯 Mục tiêu:</h3>
-                <p>Đưa <strong>cả 3 thanh Lợi ích</strong> lên vùng <span class="green-text">Xanh (trên 60 điểm)</span> và giữ chúng ổn định.</p>
-                <p class="hint">💡 <em>Mẹo: Không nên kéo bất kỳ chính sách nào lên mức tối đa...</em></p>
+                <p>Hoàn thành <strong>12 tháng</strong> với cả 3 thanh LIKT trong vùng <span class="green-text">Xanh (61-90 điểm)</span>.</p>
+                <p class="hint">💡 <em>Mỗi tháng, chính sách sẽ tác động tích lũy. Các sự kiện sẽ xảy ra ngẫu nhiên!</em></p>
             </div>
         </div>
     </section>
@@ -233,8 +234,12 @@
 
                 <!-- Reset Button -->
                 <div class="game-controls">
-                    <button class="reset-button" onclick="resetGame()">🔄 Đặt lại chính sách</button>
+                    <button class="advance-button" id="advanceBtn" onclick="advanceMonth()">➡️ Tiến qua Tháng 2</button>
+                    <button class="reset-button" onclick="resetGame()">🔄 Bắt đầu lại</button>
                 </div>
+                
+                <!-- Monthly Notification -->
+                <div class="monthly-notification" id="monthlyNotification" style="display: none;"></div>
             </div>
         </div>
     </section>
@@ -268,11 +273,32 @@
                         <div class="stat-label">LIKT XH</div>
                         <div class="stat-value" id="finalSociety">--</div>
                     </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-label">Tháng</div>
+                        <div class="stat-value" id="finalMonth">--</div>
+                    </div>
                 </div>
             </div>
             <div class="ending-footer">
-                <button class="continue-button" onclick="closeEndingModal()">Tiếp tục chơi</button>
+                <button class="continue-button" onclick="resetGame()">🔄 Chơi lại</button>
                 <button class="share-button" onclick="shareAchievement()">📱 Chia sẻ thành tích</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div class="modal event-modal" id="eventModal">
+        <div class="modal-content event-content">
+            <div class="event-header">
+                <div class="event-icon-large" id="eventIcon">📢</div>
+                <h2 id="eventTitle">Sự kiện</h2>
+            </div>
+            <div class="event-body">
+                <p id="eventDescription">Mô tả sự kiện...</p>
+                <div class="event-choices" id="eventChoices">
+                    <!-- Choices will be inserted by JS -->
+                </div>
             </div>
         </div>
     </div>

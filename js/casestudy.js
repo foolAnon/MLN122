@@ -156,8 +156,19 @@ function openCaseAnalysis(caseId) {
     
     var keywordTags = caseData.keywords.map(function(kw) { return '<span class="keyword-tag">' + kw + '</span>'; }).join('');
     
-    // Emoji lớn thay cho ảnh thật
-    var emojiSize = '8rem';
+    // Ưu tiên ảnh local, fallback sang Unsplash nếu không có
+    var imageUrl = caseData.imageUrl 
+        ? caseData.imageUrl  // Local image
+        : (caseData.imageQuery 
+            ? 'https://source.unsplash.com/1600x900/?' + encodeURIComponent(caseData.imageQuery)
+            : '');
+    
+    // Xác định nguồn ảnh để hiển thị credit
+    var imageCredit = caseData.imageUrl ? '📸 Ảnh minh họa' : '📸 Ảnh từ Unsplash';
+    
+    var imageHTML = imageUrl 
+        ? '<div class="case-image"><img src="' + imageUrl + '" alt="' + caseData.title + '" loading="lazy" onerror="this.parentElement.innerHTML=\'<div class=&quot;image-icon&quot; style=&quot;font-size: 8rem;&quot;>' + caseData.icon + '</div><div class=&quot;image-label&quot;>Không thể tải ảnh</div>\';"><div class="image-overlay"><span class="image-credit">' + imageCredit + '</span></div></div>'
+        : '<div class="case-image-placeholder"><div class="image-icon" style="font-size: 8rem;">' + caseData.icon + '</div><div class="image-label">' + caseData.title + '</div></div>';
     
     analysisContent.innerHTML = '<h2 class="analysis-title">' + caseData.fullTitle + '</h2>' +
         '<div class="quick-info-box">' +
@@ -165,7 +176,7 @@ function openCaseAnalysis(caseId) {
         '<div class="quick-info-item"><strong>📅 Thời gian:</strong> ' + caseData.time + '</div>' +
         '<div class="quick-info-item keywords"><strong>🔑 Từ khóa lý thuyết:</strong><br>' + keywordTags + '</div>' +
         '</div>' +
-        '<div class="case-image-placeholder"><div class="image-icon" style="font-size: ' + emojiSize + ';">' + caseData.icon + '</div><div class="image-label">' + caseData.title + '</div></div>' +
+        imageHTML +
         '<div class="analysis-section"><h3>📋 Tóm tắt sự kiện</h3><p>' + caseData.summary + '</p></div>' +
         '<div class="divider"></div>' +
         '<div class="analysis-section"><h3>🔍 Phân tích Lăng kính LIKT</h3><h4 class="subsection-title">Các bên liên quan & Lợi ích (LIKT):</h4>' +

@@ -10,6 +10,7 @@ const caseStudiesData = {
         location: "TP. Hồ Chí Minh",
         time: "2022 - 2024",
         icon: "⚖️",
+        imageUrl: "images/casestudy/scb.jpg", // Local image
         conflictLevel: "severe", // Mâu thuẫn gay gắt
         keywords: ["Mâu thuẫn LIKT", "Địa vị chủ thể", "Can thiệp Nhà nước (Pháp lý)"],
         position: { top: '78%', left: '52%' }, // Điều chỉnh để tránh dính
@@ -32,6 +33,7 @@ const caseStudiesData = {
         location: "Hà Nội & TP.HCM",
         time: "2022 - 2023",
         icon: "💰",
+        imageUrl: "images/casestudy/khunghoangtraiphieu.jpg", // Unsplash search query
         conflictLevel: "moderate", // Mâu thuẫn vừa phải
         keywords: ["Mâu thuẫn LIKT", "Hài hòa lợi ích", "Can thiệp Nhà nước"],
         position: { top: '28%', left: '50%' }, // Điều chỉnh để tránh dính
@@ -54,6 +56,7 @@ const caseStudiesData = {
         location: "Miền Bắc",
         time: "Tháng 5 - 6 / 2023",
         icon: "⚡",
+        imageUrl: "images/casestudy/thieudien.jpg",
         conflictLevel: "severe", // Mâu thuẫn gay gắt
         keywords: ["Mâu thuẫn LIKT", "Độc quyền", "Trình độ LLSX"],
         position: { top: '20%', left: '50%' }, // Điều chỉnh để tránh dính
@@ -76,6 +79,7 @@ const caseStudiesData = {
         location: "Đồng bằng Sông Cửu Long",
         time: "Tháng 7 / 2023 - 2024",
         icon: "🍚",
+        imageUrl: "images/casestudy/sotgiagao.jpg",        
         conflictLevel: "moderate", // Mâu thuẫn vừa phải
         keywords: ["Thống nhất & Mâu thuẫn LIKT", "Hội nhập quốc tế"],
         position: { top: '88%', left: '42%' }, // Điều chỉnh để tránh dính
@@ -98,6 +102,7 @@ const caseStudiesData = {
         location: "Hà Tĩnh",
         time: "Tháng 4 / 2016",
         icon: "🏭",
+        imageUrl: "images/casestudy/formosa.jpg", 
         conflictLevel: "severe", // Mâu thuẫn gay gắt
         keywords: ["Mâu thuẫn gay gắt", "Lợi ích Xã hội", "Can thiệp Nhà nước"],
         position: { top: '48%', left: '54%' }, // Điều chỉnh để tránh dính
@@ -120,6 +125,7 @@ const caseStudiesData = {
         location: "TP. Hồ Chí Minh",
         time: "12/2021 - 01/2022",
         icon: "🏘️",
+        imageUrl: "images/casestudy/batdongsan.jpg", 
         conflictLevel: "moderate", // Mâu thuẫn vừa phải
         keywords: ["Mâu thuẫn LIKT", "Địa vị chủ thể", "Quy luật giá trị"],
         position: { top: '80%', left: '56%' }, // Điều chỉnh để tránh dính
@@ -142,6 +148,7 @@ const caseStudiesData = {
         location: "Hà Nội, TP.HCM",
         time: "2017 - 2019",
         icon: "🚕",
+        imageUrl: "images/casestudy/grabtaxi.jpg", 
         conflictLevel: "low", // Thống nhất (lợi ích người tiêu dùng)
         keywords: ["Trình độ LLSX", "Cạnh tranh", "Mâu thuẫn & Thống nhất"],
         position: { top: '35%', left: '53%' }, // Điều chỉnh để tránh dính

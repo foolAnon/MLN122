@@ -4,7 +4,7 @@ Website học tập tương tác về **Lợi ích Kinh tế** và **Quan hệ L
 
 ## 📋 Mô tả dự án
 
-Website này được thiết kế nhằm giúp sinh viên hiểu sâu về các khái niệm Lợi ích Kinh tế thông qua 3 khu vực chính:
+Website này được thiết kế nhằm giúp sinh viên hiểu sâu về các khái niệm Lợi ích Kinh tế thông qua 4 khu vực chính:
 
 ### 🎮 1. Lab Mô phỏng
 - Trải nghiệm vai trò của 3 chủ thể: Chủ doanh nghiệp, Người lao động, Nhà nước
@@ -22,14 +22,16 @@ Website này được thiết kế nhằm giúp sinh viên hiểu sâu về các
 - Phân tích lợi ích của từng bên tham gia
 - Rút ra bài học về mâu thuẫn và thống nhất lợi ích
 
-### 💬 3. Diễn đàn Đa chiều
-- 4 chủ đề tranh luận nóng:
-  - Tăng lương tối thiểu 15%
-  - Tăng giá điện sinh hoạt
-  - Đánh thuế shop online
-  - Tăng mức đóng BHYT
-- Nhiều góc nhìn khác nhau từ các chủ thể
-- Phân tích lợi ích đằng sau mỗi quan điểm
+### 🎥 3. Video Giảng dạy
+- Video giải thích chi tiết về Lợi ích Kinh tế
+- Phân tích Quan hệ Lợi ích Kinh tế giữa các chủ thể
+- Tài liệu tham khảo và transcript đầy đủ
+- Video liên quan và tài liệu bổ sung
+
+### ℹ️ 4. Giới thiệu
+- Nền tảng lý thuyết Kinh tế Chính trị Mác-Lênin
+- Khái niệm và vai trò của Lợi ích Kinh tế
+- Thông tin về dự án và người thực hiện
 
 ## 🚀 Cách sử dụng
 
@@ -38,10 +40,10 @@ Website này được thiết kế nhằm giúp sinh viên hiểu sâu về các
 2. Hoặc sử dụng Live Server trong VS Code
 
 ### Điều hướng
-- **Trang chủ**: Giới thiệu tổng quan và điều hướng đến 3 khu vực chính
+- **Trang chủ**: Giới thiệu tổng quan và điều hướng đến các khu vực chính
 - **Lab Mô phỏng**: Chọn vai trò → Đọc tình huống → Đưa ra quyết định → Xem phân tích
 - **Case Study**: Chọn case study → Đọc phân tích chi tiết về các bên liên quan
-- **Diễn đàn**: Chọn chủ đề → Xem các quan điểm → Đọc phân tích lợi ích
+- **Video Giảng dạy**: Xem video giải thích → Tải tài liệu tham khảo
 - **Giới thiệu**: Tìm hiểu về dự án và nền tảng lý thuyết
 
 ## 📁 Cấu trúc thư mục
@@ -51,19 +53,18 @@ mln122_website/
 ├── index.html              # Trang chủ
 ├── lab.html               # Lab Mô phỏng
 ├── casestudy.html         # Case Study
-├── forum.html             # Diễn đàn
+├── video.html             # Video Giảng dạy
 ├── about.html             # Giới thiệu
 ├── css/
 │   ├── styles.css         # Styles chung
 │   ├── lab.css           # Styles cho Lab
 │   ├── casestudy.css     # Styles cho Case Study
-│   ├── forum.css         # Styles cho Forum
+│   ├── video.css         # Styles cho Video
 │   └── about.css         # Styles cho About
 ├── js/
 │   ├── script.js         # JavaScript chung
 │   ├── lab.js            # Logic Lab Mô phỏng
-│   ├── casestudy.js      # Logic Case Study
-│   └── forum.js          # Logic Forum
+│   └── casestudy.js      # Logic Case Study
 └── README.md             # File này
 ```
 
@@ -84,7 +85,7 @@ mln122_website/
 ### Nội dung
 - ✅ 3 tình huống mô phỏng với 3 góc nhìn khác nhau
 - ✅ 6 case study thực tiễn với phân tích chi tiết
-- ✅ 4 chủ đề diễn đàn với nhiều quan điểm
+- ✅ Video giảng dạy với tài liệu đầy đủ
 - ✅ Nền tảng lý thuyết vững chắc
 
 ## 🛠️ Công nghệ sử dụng
@@ -99,7 +100,7 @@ mln122_website/
 ### Tùy chỉnh thông tin cá nhân
 Hãy cập nhật thông tin của bạn trong các file sau:
 
-1. **Footer của tất cả các trang** (index.html, lab.html, casestudy.html, forum.html, about.html):
+1. **Footer của tất cả các trang** (index.html, lab.html, casestudy.html, video.html, about.html):
    ```html
    <p class="footer-info">
        Sinh viên thực hiện: [Tên SV] | Lớp: [Mã lớp] | GVHD: [Tên GV]
@@ -114,7 +115,7 @@ Hãy cập nhật thông tin của bạn trong các file sau:
 Bạn có thể dễ dàng thêm:
 - **Tình huống mới** trong Lab: Chỉnh sửa file `js/lab.js`, object `scenarios`
 - **Case Study mới**: Chỉnh sửa file `js/casestudy.js`, object `caseStudies`
-- **Chủ đề Forum mới**: Chỉnh sửa file `js/forum.js`, object `debates`
+- **Video mới**: Xem hướng dẫn trong file `HUONG_DAN_VIDEO.md`
 
 ## 🎓 Mục đích học thuật
 
