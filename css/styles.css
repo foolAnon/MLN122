@@ -439,15 +439,15 @@ body {
 }
 
 .case-card::before {
-    background: var(--gradient-2);
+    background: var(--gradient-1);
 }
 
 .forum-card::before {
-    background: var(--gradient-3);
+    background: var(--gradient-1);
 }
 
 .video-card::before {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: var(--gradient-1);
 }
 
 .module-card:hover {
@@ -483,15 +483,15 @@ body {
 }
 
 .case-card .module-title {
-    color: #f5576c;
+    color: #667eea;
 }
 
 .forum-card .module-title {
-    color: #00f2fe;
+    color: #667eea;
 }
 
 .video-card .module-title {
-    color: #f5576c;
+    color: #667eea;
 }
 
 .module-question {
@@ -520,13 +520,8 @@ body {
     font-size: 0.9rem;
     position: relative;
     overflow: hidden;
-}
-
-.module-button::after {
-    content: '→';
-    margin-left: 0.5rem;
-    transition: transform 0.3s ease;
-    display: inline-block;
+    min-width: 200px;
+    text-align: center;
 }
 
 .lab-button {
@@ -534,24 +529,20 @@ body {
 }
 
 .case-button {
-    background: var(--gradient-2);
+    background: var(--gradient-1);
 }
 
 .forum-button {
-    background: var(--gradient-3);
+    background: var(--gradient-1);
 }
 
 .video-button {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: var(--gradient-1);
 }
 
 .module-button:hover {
-    transform: translateX(8px) translateY(-2px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-xl);
-}
-
-.module-button:hover::after {
-    transform: translateX(5px);
 }
 
 /* ========================================
