@@ -22,6 +22,59 @@ function addVietnamTerritoryMarkers() {
     // Trường Sa (Spratly Islands) - Tọa độ đại diện
     const truongSaCoords = [8.65, 111.92];
     
+    // 🚫 CHE CHỮ TRUNG QUỐC - Thêm white overlay rectangles
+    // Che label "Xisha Qundao" (西沙群島) ở Hoàng Sa
+    const hoangSaOverlay1 = L.rectangle(
+        [[16.3, 111.5], [16.8, 112.5]], 
+        {
+            color: 'rgba(255, 255, 255, 0)',
+            fillColor: 'white',
+            fillOpacity: 0.95,
+            weight: 0,
+            interactive: false,
+            pane: 'overlayPane'
+        }
+    ).addTo(map);
+    
+    // Che label "Nansha Qundao" (南沙群島) ở Trường Sa
+    const truongSaOverlay1 = L.rectangle(
+        [[8.3, 111.0], [9.0, 112.8]], 
+        {
+            color: 'rgba(255, 255, 255, 0)',
+            fillColor: 'white',
+            fillOpacity: 0.95,
+            weight: 0,
+            interactive: false,
+            pane: 'overlayPane'
+        }
+    ).addTo(map);
+    
+    // Overlay thứ 2 cho Hoàng Sa (phủ rộng hơn)
+    const hoangSaOverlay2 = L.rectangle(
+        [[16.0, 111.3], [17.2, 112.8]], 
+        {
+            color: 'rgba(255, 255, 255, 0)',
+            fillColor: 'white',
+            fillOpacity: 0.85,
+            weight: 0,
+            interactive: false,
+            pane: 'overlayPane'
+        }
+    ).addTo(map);
+    
+    // Overlay thứ 2 cho Trường Sa (phủ rộng hơn)
+    const truongSaOverlay2 = L.rectangle(
+        [[7.8, 110.5], [9.5, 113.0]], 
+        {
+            color: 'rgba(255, 255, 255, 0)',
+            fillColor: 'white',
+            fillOpacity: 0.85,
+            weight: 0,
+            interactive: false,
+            pane: 'overlayPane'
+        }
+    ).addTo(map);
+    
     // Custom icon cho Hoàng Sa và Trường Sa
     const territoryIcon = L.divIcon({
         className: 'territory-marker',
