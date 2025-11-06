@@ -36,9 +36,9 @@ function addVietnamTerritoryMarkers() {
         }
     ).addTo(map);
     
-    // Che label "Nansha Qundao" (南沙群島) ở Trường Sa
+    // Che label "Nansha Qundao" (南沙群島) ở Trường Sa (TĂNG 30%)
     const truongSaOverlay1 = L.rectangle(
-        [[8.3, 111.0], [9.0, 112.8]], 
+        [[8.1, 110.6], [9.2, 113.2]], 
         {
             color: 'rgba(255, 255, 255, 0)',
             fillColor: 'white',
@@ -49,26 +49,26 @@ function addVietnamTerritoryMarkers() {
         }
     ).addTo(map);
     
-    // Overlay thứ 2 cho Hoàng Sa (phủ rộng hơn)
+    // Overlay thứ 2 cho Hoàng Sa (phủ rộng hơn - opacity 95%)
     const hoangSaOverlay2 = L.rectangle(
         [[16.0, 111.3], [17.2, 112.8]], 
         {
             color: 'rgba(255, 255, 255, 0)',
             fillColor: 'white',
-            fillOpacity: 0.85,
+            fillOpacity: 0.95,
             weight: 0,
             interactive: false,
             pane: 'overlayPane'
         }
     ).addTo(map);
     
-    // Overlay thứ 2 cho Trường Sa (phủ rộng hơn)
+    // Overlay thứ 2 cho Trường Sa (phủ rộng hơn - TĂNG 30% - opacity 95%)
     const truongSaOverlay2 = L.rectangle(
-        [[7.8, 110.5], [9.5, 113.0]], 
+        [[7.5, 110.0], [9.8, 113.5]], 
         {
             color: 'rgba(255, 255, 255, 0)',
             fillColor: 'white',
-            fillOpacity: 0.85,
+            fillOpacity: 0.95,
             weight: 0,
             interactive: false,
             pane: 'overlayPane'
