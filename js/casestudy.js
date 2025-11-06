@@ -14,6 +14,68 @@ var locationCoords = {
     'grab-taxi': [21.0285, 105.8542]          // Hà Nội (đại diện cho Hà Nội + HCM)
 };
 
+// 🇻🇳 Function thêm markers cho Hoàng Sa và Trường Sa (Lãnh thổ Việt Nam)
+function addVietnamTerritoryMarkers() {
+    // Hoàng Sa (Paracel Islands) - Tọa độ chính giữa quần đảo
+    const hoangSaCoords = [16.5, 112.0];
+    
+    // Trường Sa (Spratly Islands) - Tọa độ đại diện
+    const truongSaCoords = [8.65, 111.92];
+    
+    // Custom icon cho Hoàng Sa và Trường Sa
+    const territoryIcon = L.divIcon({
+        className: 'territory-marker',
+        html: '<div class="territory-pin">' +
+              '<div class="territory-flag">🇻🇳</div>' +
+              '</div>',
+        iconSize: [30, 40],
+        iconAnchor: [15, 40],
+        popupAnchor: [0, -40]
+    });
+    
+    // Marker Hoàng Sa
+    L.marker(hoangSaCoords, { icon: territoryIcon })
+        .addTo(map)
+        .bindPopup(
+            '<div class="territory-popup">' +
+            '<h4 style="margin: 0 0 8px 0; color: #dc2626; font-size: 1.1rem;">🏝️ Quần đảo Hoàng Sa</h4>' +
+            '<p style="margin: 0; font-weight: 600; color: #059669;">Lãnh thổ Việt Nam 🇻🇳</p>' +
+            '<p style="margin: 8px 0 0 0; font-size: 0.9rem; color: #64748b;">' +
+            'Paracel Islands - Thuộc chủ quyền Việt Nam từ thời Nguyễn, hiện bị Trung Quốc chiếm đóng trái phép.</p>' +
+            '</div>',
+            { 
+                maxWidth: 300,
+                className: 'custom-popup'
+            }
+        )
+        .bindTooltip('🇻🇳 Hoàng Sa (Việt Nam)', {
+            permanent: false,
+            direction: 'top',
+            className: 'territory-tooltip'
+        });
+    
+    // Marker Trường Sa
+    L.marker(truongSaCoords, { icon: territoryIcon })
+        .addTo(map)
+        .bindPopup(
+            '<div class="territory-popup">' +
+            '<h4 style="margin: 0 0 8px 0; color: #dc2626; font-size: 1.1rem;">🏝️ Quần đảo Trường Sa</h4>' +
+            '<p style="margin: 0; font-weight: 600; color: #059669;">Lãnh thổ Việt Nam 🇻🇳</p>' +
+            '<p style="margin: 8px 0 0 0; font-size: 0.9rem; color: #64748b;">' +
+            'Spratly Islands - Lãnh thổ Việt Nam từ thời xưa. Việt Nam đang kiểm soát 29 đảo và bãi đá.</p>' +
+            '</div>',
+            { 
+                maxWidth: 300,
+                className: 'custom-popup'
+            }
+        )
+        .bindTooltip('🇻🇳 Trường Sa (Việt Nam)', {
+            permanent: false,
+            direction: 'top',
+            className: 'territory-tooltip'
+        });
+}
+
 function initializeMap() {
     // Tạo Leaflet map tập trung vào Việt Nam
     map = L.map('leafletMap', {
@@ -29,6 +91,9 @@ function initializeMap() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19
     }).addTo(map);
+    
+    // Thêm markers cho Hoàng Sa và Trường Sa
+    addVietnamTerritoryMarkers();
     
     // Tạo custom icon cho mỗi case
     Object.values(caseStudiesData).forEach(function(caseData) {
